@@ -203,7 +203,7 @@ public abstract class Vehicle
     // Déclaration d'une méthode abstract
     public abstract int GetWheels();
 
-    // Déclaration d'une méthode virtuelles
+    // Déclaration d'une méthode virtuelle
     public virtual void Klaxon()
     {
         Console.WriteLine("Pouet pouet");
