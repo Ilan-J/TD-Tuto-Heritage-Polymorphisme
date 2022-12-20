@@ -1,6 +1,7 @@
 # Tutoriel Héritage et Polymorphisme
 
-Addendum : Ce tutoriel a été réalisé pour le développement en C#.
+**Addendum :** Ce tutoriel a été réalisé pour le développement en C#.
+___
 
 ## 1. L'héritage
 
@@ -151,6 +152,8 @@ class Item : IA, IB
 }
 ```
 
+___
+
 ## 2. Le polymorphisme
 
 Le polymorphisme permet de manipuler des objets sans connaître tout à fait leur type.
@@ -159,23 +162,20 @@ De façon générale, le polymorphisme est le fait qu'un même code puisse s'ada
 
 ### Méthodes Abstraites
 
- Une méthode abstraite déclare un comportement sans le définir. Elle doit être redéfinie dans toutes les classes dérivées (par le mot clé @override).
+ Une méthode abstraite (mot clé *abstract*) **déclare un comportement sans le définir**. Elle doit être **redéfinie dans toutes les classes dérivées** (par le mot clé *override*).
 
-Idée intuitive :
-Définir des concepts abstraits
-Pour lesquels on ne peut pas directement définir des objets
-mais qui peuvent être préciser dans les classes héritières.
+Une méthode abstraite doit toujours être **créée dans une classe abstraite**.
 
 ### Méthodes virtuelles
 
-Une méthode virtuelle ( virtual ) fournit un comportement par défaut dans une classe.
-Elle peut être redéfinie ( override ) dans une classe dérivée.
+Une méthode virtuelle (*virtual*) fournit un comportement par défaut dans une classe.
+Elle **peut être redéfinie** ( override / surcharge ) dans une classe dérivée.
 
 ### La surcharge
 
 La surcharge offre la possibilité de définir
 
-- des méthodes homonynes
+- des méthodes homonynes pour étendre et modifier l'implémentation abstraite ou virtuelle
 (même nom et mêmes paramètres)
 pour des objets de type différents.
 
@@ -185,8 +185,7 @@ pour des objets de type différents.
 
 [Guide POO](https://ufrsciencestech.u-bourgogne.fr/licence2/ARCHIVES/i4a/I4a_cm3.pdf)
 
----
-Explication du code, voir le code Polymorph.cs :
+___
 
 **Voici un exemple en C#**:
 
@@ -200,11 +199,10 @@ Ensuite, nous pouvons parcourir en boucle chaque véhicule de la liste et les tr
 
 Ce code est dit polymorphe, car le code exact qui est exécuté est déterminé par la sous-classe référencée au moment de l'exécution.
 
-Voir plus précisement Polymorph.cs
-
 ```cs
 public abstract class Vehicle
 {
+    // Déclaration d'une méthode abstract
     public abstract int Wheels;
 }
 
