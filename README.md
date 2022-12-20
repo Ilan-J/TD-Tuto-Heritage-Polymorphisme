@@ -156,7 +156,7 @@ ___
 
 ## 2. Le polymorphisme
 
-Le polymorphisme permet de manipuler des objets sans connaître tout à fait leur type.
+Le **polymorphisme** permet de manipuler des objets sans connaître tout à fait leur type.
 
 De façon générale, le polymorphisme est le fait qu'un même code puisse s'adapter automatiquement aux types des données qu'ils s'appliquent.
 
@@ -173,9 +173,9 @@ Elle **peut être redéfinie** ( override / surcharge ) dans une classe dérivé
 
 ### La surcharge
 
-La surcharge offre la possibilité de définir
+Le modificateur override est nécessaire pour étendre ou modifier l’implémentation abstraite ou virtuelle.
 
-- des méthodes homonynes pour étendre et modifier l'implémentation abstraite ou virtuelle
+- des méthodes homonynes
 (même nom et mêmes paramètres)
 pour des objets de type différents.
 
@@ -189,8 +189,6 @@ ___
 
 **Voici un exemple en C#**:
 
-- Créez quatre classes dans une application console :
-
 Dans cet exemple, nous créons une liste de la classe de base Véhicule, qui ne sait pas combien de roues possède chacune de ses sous-classes, mais qui sait que chaque sous-classe est chargée de savoir combien de roues elle possède.
 
 Nous ajoutons ensuite une bicyclette, une voiture et un camion à la liste.
@@ -203,12 +201,18 @@ Ce code est dit polymorphe, car le code exact qui est exécuté est déterminé 
 public abstract class Vehicle
 {
     // Déclaration d'une méthode abstract
-    public abstract int Wheels;
+    public abstract int GetWheels();
+
+    // Déclaration d'une méthode virtuelles
+    public virtual void Klaxon()
+    {
+        Console.WriteLine("Pouet pouet");
+    }
 }
 
 public class Bicycle : Vehicle
 {
-    public override int Wheels()
+    public override int GetWheels()
     {
         return 2;
     }
@@ -216,7 +220,7 @@ public class Bicycle : Vehicle
 
 public class Car : Vehicle
 {
-    public override int Wheels()
+    public override int GetWheels()
     {
         return 4;
     }
@@ -224,28 +228,33 @@ public class Car : Vehicle
 
 public class Truck : Vehicle
 {
-    public override int Wheels()
+    public override int GetWheels()
     {
         return 18;
+    }
+
+    public override void Klaxon()
+    {
+        Console.WriteLine("TUUUUT");
     }
 }
 public class Program
 {
     public static void Main()
     {
-        List<Vehicle> vehicles = new()
-        {
-            new Bicycle(),
-            new Car(),
-            new Truck()
-        };
+        Bicycle bicycle = new Bicycle();
+        Car car = new Car();
+        Truck truck = new Truck(); 
 
-        foreach (Vehicle v in vehicles)
-        {
-            Console.WriteLine("A {0} has {1} wheels.",
-                v.GetType().Name,
-                v.Wheels);
-        }
+        int bicycleWheels = bicycle.GetWheels(); // Retourne 2;
+
+        int carWheels = car.GetWheels(); // Retourne 4;
+
+        int truckWheels = truck.GetWheels(); // Retourne 18;
+
+        bicycle.Klaxon(); // "Pouet pouet"
+        car.Klaxon(); // "Pouet pouet"
+        truck.Klaxon(); // "TUUUUT"
     }
 }
 ```
