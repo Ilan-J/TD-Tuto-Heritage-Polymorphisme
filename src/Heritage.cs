@@ -1,4 +1,4 @@
-namespace src;
+namespace src.Heritage;
 
 class FootballPlayer
 {
@@ -13,7 +13,6 @@ class FootballPlayer
     {
         Console.WriteLine("{0} shoots the ball.", this.name);
     }
-
 }
 
 class GoalKeeper : FootballPlayer
@@ -30,7 +29,7 @@ class GoalKeeper : FootballPlayer
 
 class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
         GoalKeeper goalKeeper = new GoalKeeper("Hugo Lloris");
 

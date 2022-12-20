@@ -1,3 +1,5 @@
+namespace src.Polymorphisme;
+
 public abstract class Vehicle
 {
     public abstract int Wheels;
@@ -28,13 +30,14 @@ public class Truck : Vehicle
 }
 public class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
-        List<Vehicle> vehicles = new List<Vehicle>();
-
-        vehicles.Add(new Bicycle());
-        vehicles.Add(new Car());
-        vehicles.Add(new Truck());
+        List<Vehicle> vehicles = new()
+        {
+            new Bicycle(),
+            new Car(),
+            new Truck()
+        };
 
         foreach (Vehicle v in vehicles)
         {

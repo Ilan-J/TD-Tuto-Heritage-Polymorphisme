@@ -1,4 +1,4 @@
-namespace src;
+namespace src.Interface;
 
 interface IReadable
 {
